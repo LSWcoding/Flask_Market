@@ -1,48 +1,36 @@
-Dependencies
---------------
-pip install:
+____________
+__Error__
 
-flask
+PS F:\codemarket> python -m flask shell
+Usage: python -m flask shell [OPTIONS]
+Try 'python -m flask shell --help' for help.
 
-sqlalchemy
+Error: Could not locate a Flask application. Use the 'flask --app' option, 'FLASK_APP' environment variable, or a 'wsgi.py' or 'app.py' file in the current directory.
 
-flask_wtf
+__Solution__
 
-flask_bcrypt
+type in terminal:
+$env:FLASK_APP="run.py"
+_________________________
+__Commands__
 
-flask_login
+to add sth to database:
 
-wrforms
+$env:FLASK_APP:"run.py"
 
-wtforms.validators
+python -m flask shell #to enter the shell to manipulate database
 
--------------------
-in __ __init__ __.py :
+from market import db
 
-to create app 
+from market.models import Item,User #must be market.models and not market because python imports sth from __ init __.py by default
 
-initialize extends like db ,bcrypt,login_manager
+db.create_all()
 
-load models
+item1 = Item(name="Macbook",price=900,barcode='123456789123',description="test",owner=None) #for example
 
-set up configurations
+db.session.add(item1)
 
-making the constructure clear
+db.session.commit()
 
-from market(the current directory) import xxx means from __ int __ import
-_______
-in routes, def market_page:
-
-purchase_item = request.form.get("purchased_item") it works like:
-
-a tag:
-
-<input type"hidden" name"purchased_item" value="Macbook">
-
-submitt the tag by POST and the server receive purchased_item = Macbook
-
-then
-
-purchased_item =="Macbook"
-
-
+Item.query.all() #inspect the items in database
+ 
