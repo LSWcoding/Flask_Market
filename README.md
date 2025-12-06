@@ -112,3 +112,5 @@ to filter(in the flask shell):
 Item.query.filter_by(price) (price,name,id,barcode....)
 
 
+
+![family-guy-griffin-on-toilet-bowl-zk2c0t05e080bs7t](https://github.com/user-attachments/assets/62d17591-a3d3-4753-b612-a8dfffad2289)
