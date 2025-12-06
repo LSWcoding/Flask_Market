@@ -1,5 +1,6 @@
 # Flask_Market
-This repository is for recording the process of learning flask with a project Flask_Market in freecodecamp
+This Flask_Market is completed by following the tutorial video from freecodecamp and thanks for the tutor Jim and his codes in https://github.com/jimdevops19/FlaskSeries.git.There are notes made in the files for the codes while learning with the video.
+The file README_Cheatsheet.md contains something about Flask which were noted down when I reviewed the codes and summarized.
 -------------------------
 __How the project looks like__
 
