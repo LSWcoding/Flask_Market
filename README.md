@@ -1,116 +1,85 @@
 # Flask_Market
 This repository is for recording the process of learning flask with a project Flask_Market in freecodecamp
 -------------------------
+__How the project looks like__
 
-To start a Flask program:
-------------------------
+<img width="1920" height="867" alt="home" src="https://github.com/user-attachments/assets/98d8a4c0-ba4a-4307-a060-f91ea427bbcd" />
+<img width="1920" height="867" alt="loggin" src="https://github.com/user-attachments/assets/3d9756ef-149e-4964-be93-7f209b94318c" />
+<img width="1897" height="877" alt="register" src="https://github.com/user-attachments/assets/a5c0e541-5a29-4643-aedc-d587fcd06ece" />
+<img width="1920" height="855" alt="home_entered" src="https://github.com/user-attachments/assets/c6c1ac2a-e4f3-4da2-ace8-ca6ac077c22d" />
+<img width="1920" height="877" alt="more_information" src="https://github.com/user-attachments/assets/e65d6e80-35d5-4086-acf7-5a87adbb910e" />
+<img width="1920" height="870" alt="purchase" src="https://github.com/user-attachments/assets/9127d736-abe6-436a-9725-aefb73b10820" />
+<img width="1917" height="856" alt="purchased" src="https://github.com/user-attachments/assets/8d89f9c3-1d0c-4652-92f8-58ce150a175d" />
+<img width="1917" height="868" alt="sell" src="https://github.com/user-attachments/assets/0db0d21d-4b05-4e03-82f8-d910f5196a46" />
+<img width="1920" height="848" alt="sold" src="https://github.com/user-attachments/assets/bc79343b-f6e5-4659-aff8-f59312768ef3" />
 
-"$env:FLASK_APP=app.py"
+_______________
+
+____Commands in the terminal____
+_____________________________
+
+__To import dependencies:__
+
+pip install:
+
+flask
+
+sqlalchemy
+
+flask_wtf
+
+flask_bcrypt
+
+flask_login
+
+wrforms
+
+wtforms.validators
+
+__To start the project:__
+
+$env:FLASK_APP="run.py"
 
 "$env:FLASK_DEBUG=1"
 
-"python -m flask run"
+python run (+tab to be like :python /.run.py)
 
+__To manipulate database:__
 
-to inherit
------------------------
-in the inherited class:
+$env:FLASK_APP="run.py"
 
- {% block title %}
- 
- {% endblock %}
- 
- in the inheriting classes:
- 
-{% extends 'base.html' %}
+python -m flask shell (to enter the shell and operate in the shell)
 
-{% block title %}
+from market import db
 
-Home Page
+from market.models import Item,User (must be market.models and not market because python imports sth from __ init __.py by default)
 
-{% endblock %}
+db.create_all()
 
----------------------
-notes:the folder name 'templates'is default and unchangeable because flask get into the folder templates to search for the resources
----------------------------------------------------
-in VScode everytime we need to add something to the database in the terminal we should type in the terminal like:
+item1 = Item(name="Macbook",price=900,barcode='123456789123',description="test",owner=None) (for example)
 
-python -m flask shell (to get into the flask shell and add sth to the database there)
+db.session.add(item1)
 
-it will return like
+db.session.commit()
 
-Python 3.13.9 (tags/v3.13.9:8183fa5, Oct 14 2025, 14:09:13) [MSC v.1944 64 bit (AMD64)] on win32
-App: market
-Instance: F:\Flask_Market\instance
+Item.query.all() (inspect the items in database)
 
-then input:
-
-from market import app,db  (the database object)
-
-from market import Item  (the model)
-
-db.create_all() 
-
-item = Item(xxxxx)
-
-db.session.add(item)
-
-db.session.commit
-
-Item.query.all() (to view the item added)
-
-if we are not in the flask shell, 
-
-RuntimeError: Working outside of application context.
-
-This typically means that you attempted to use functionality that needed
-the current application. To solve this, set up an application context
-with app.app_context(). See the documentation for more information.
-
-will frequently appear
-
-if the codes have been changed and wanting to see the new result in the terminal we should restart the flask shell then type the commands to see it
-
-----------------------------
-
-to iterate the Items in the databse:
-
-type in the terminal(flask shell):
+__To inspect the items in database and show out the information of the items by iteration in the terminal (for example):__
 
 for item in Item.query.all():
 
-...     item.name
+... item.name
 
-...     item.price
+... item.price
 
-...     item.description
+... item.description
 
-...     item.id
+... item.id
 
-then the result:
-
-'IPhone10'
-
-500
-
-'desc'
-
-1
-
-'Laptop'
-
-900
-
-'description'
-
-2
-
---------------
-
-to filter(in the flask shell):
+__To filter in the terminal:__
 
 Item.query.filter_by(price) (price,name,id,barcode....)
+To filter in the terminal:
 
-
-
-![family-guy-griffin-on-toilet-bowl-zk2c0t05e080bs7t](https://github.com/user-attachments/assets/62d17591-a3d3-4753-b612-a8dfffad2289)
+Item.query.filter_by(price) (price,name,id,barcode....)
+________________________________________________________
